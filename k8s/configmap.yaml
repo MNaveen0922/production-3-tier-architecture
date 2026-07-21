@@ -1,0 +1,10 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: support-desk-config
+  namespace: support-desk
+data:
+
+  AWS_SSM_PATH: "/support-desk/prod/config"
+  AWS_REGION: "us-east-1"

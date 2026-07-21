@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f6fb;
+  color: #1f2430;
+}
+
+/* ── Auth page ── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  width: 380px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.brand-mark {
+  font-size: 32px;
+}
+
+.brand-mark.large {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.auth-card h1 {
+  margin: 4px 0 0;
+  font-size: 26px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.auth-toggle {
+  display: flex;
+  background: #eef1f6;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.auth-toggle button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.auth-toggle button.active {
+  background: #1d3557;
+  color: #fff;
+}
+
+.auth-card input,
+.auth-card textarea,
+.auth-card select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #d7dce3;
+  font-size: 14px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #e63946;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #1d3557;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-ghost {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ── Banner messages ── */
+.banner {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.banner.success {
+  background: #d8f3dc;
+  color: #1b4332;
+}
+
+.banner.error {
+  background: #ffe0e0;
+  color: #7a1f1f;
+}
+
+/* ── Dashboard ── */
+.dashboard-page {
+  min-height: 100vh;
+}
+
+.navbar {
+  background: #1d3557;
+  color: #fff;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 20px 32px 0;
+}
+
+.tab {
+  border: none;
+  background: #e9edf5;
+  padding: 10px 18px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: #556;
+}
+
+.tab.active {
+  background: #fff;
+  color: #1d3557;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.panel {
+  background: #fff;
+  margin: 0 32px 32px;
+  padding: 28px;
+  border-radius: 0 12px 12px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.ticket-form {
+  display: grid;
+  gap: 10px;
+  max-width: 480px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.ticket-form input,
+.ticket-form textarea,
+.ticket-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d7dce3;
+  font-size: 14px;
+}
+
+.ticket-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.ticket-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px;
+  position: relative;
+}
+
+.ticket-card h4 {
+  margin: 6px 0;
+}
+
+.priority-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.priority-badge.low {
+  background: #d8f3dc;
+  color: #1b4332;
+}
+
+.priority-badge.medium {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.priority-badge.high {
+  background: #ffe0e0;
+  color: #7a1f1f;
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-table th,
+.ticket-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.import-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.hint {
+  color: #6b7280;
+  font-size: 13px;
+}

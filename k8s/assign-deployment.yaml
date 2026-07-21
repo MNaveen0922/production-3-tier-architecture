@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assign-deployment
+  namespace: support-desk
+  labels:
+    app: assign-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assign-service
+  template:
+    metadata:
+      labels:
+        app: assign-service
+    spec:
+      serviceAccountName: support-desk-sa
+      containers:
+        - name: assign-service
+          image: 124990256338.dkr.ecr.us-east-1.amazonaws.com/support-desk-assignment:latest
+          ports:
+            - containerPort: 8003
+          envFrom:
+            - configMapRef:
+                name: support-desk-config
+          livenessProbe:
+            httpGet:
+              path: /assign/health
+              port: 8003
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /assign/health
+              port: 8003
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: assign-service
+  namespace: support-desk
+spec:
+  type: ClusterIP
+  selector:
+    app: assign-service
+  ports:
+    - port: 8003
+      targetPort: 8003

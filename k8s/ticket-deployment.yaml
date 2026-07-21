@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-deployment
+  namespace: support-desk
+  labels:
+    app: ticket-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-service
+  template:
+    metadata:
+      labels:
+        app: ticket-service
+    spec:
+      serviceAccountName: support-desk-sa
+      containers:
+        - name: ticket-service
+          image: 124990256338.dkr.ecr.us-east-1.amazonaws.com/support-desk-ticket:latest
+          ports:
+            - containerPort: 8002
+          envFrom:
+            - configMapRef:
+                name: support-desk-config
+          livenessProbe:
+            httpGet:
+              path: /tickets/health
+              port: 8002
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /tickets/health
+              port: 8002
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-service
+  namespace: support-desk
+spec:
+  type: ClusterIP
+  selector:
+    app: ticket-service
+  ports:
+    - port: 8002
+      targetPort: 8002
